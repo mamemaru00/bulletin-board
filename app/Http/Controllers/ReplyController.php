@@ -1,21 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Thread;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
-class ThreadController extends Controller
+class ReplyController extends Controller
 {
     public function index()
     {
-        //スレッド情報を取得して代入
-        $threads = Thread::all();
-
-        //掲示板ページを表示
-        return view('bbs/index', compact('threads'));
+        //
     }
 
     public function create()

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ThreadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::redirect('/', '/bbs');
-Route::view('/bbs', '/bbs/index');
+Route::resource('/bbs', ThreadController::class);

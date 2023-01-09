@@ -84,12 +84,16 @@
         </div>
 
         {{-- 投稿 --}}
+       @foreach ($threads as $thread)
         <div class="bg-white rounded-md mt-1 mb-1 p-3">
             {{-- スレッド --}}
             <div>
                 <p class="mb-2 text-xs">2021/11/20 18:00 ＠Noname</p>
+                <p class="mb-2 text-xs">{{$thread->created_at}} ＠{{$thread->user_name}}</p>
                 <p class="mb-2 text-xl font-bold">●●について</p>
+                <p class="mb-2 text-xl font-bold">{{$thread->message_title}}</p>
                 <p class="mb-2">これは本文です。これは本文です。これは本文です。これは本文です。これは本文です。これは本文です。これは本文です。これは本文です。これは本文です。</p>
+                <p class="mb-2">{{ $thread->message }}</p>
             </div>
             {{-- 削除ボタン --}}
             <form class="flex justify-end mt-5" action="/" method="POST">
@@ -114,6 +118,7 @@
                 </div>
             </div>
         </div>
+        @endforeach  
 
         {{-- ページネーション --}}
         <p class="flex justify-center text-blue-300 mt-1 mb-5 link-hover cursor-pointer">prev 1 2 3 4 next</p>
