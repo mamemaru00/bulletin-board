@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\ReplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ use App\Http\Controllers\ThreadController;
 
 Route::redirect('/', '/bbs');
 Route::resource('/bbs', ThreadController::class);
+Route::resource('/reply', ReplyController::class);

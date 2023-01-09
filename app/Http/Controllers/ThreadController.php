@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Thread;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use App\Models\Thread;
 
 class ThreadController extends Controller
 {
     public function index()
     {
         //スレッド情報を取得して代入
-        $threads = Thread::all();
+        $threads = Thread::orderBy('created_at', 'desc')->get();
 
         //掲示板ページを表示
         return view('bbs/index', compact('threads'));
@@ -25,7 +25,11 @@ class ThreadController extends Controller
 
     public function store(Request $request)
     {
-        //
+        //フォームに入力された情報をデータベースへ登録
+        $threads = new Thread;
+        $form = $request->all();
+        $threads->fill($form)->save();
+        return redirect('/');
     }
 
     public function show($id)
@@ -45,6 +49,8 @@ class ThreadController extends Controller
 
     public function destroy($id)
     {
-        //
+        //スレッド情報をデータベースから削除
+        $thread = Thread::find($id)->delete();
+        return redirect('/');
     }
 }
