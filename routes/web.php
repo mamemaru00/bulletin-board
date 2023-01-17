@@ -19,6 +19,7 @@ use App\Http\Controllers\ReplyController;
 //     return view('welcome');
 // });
 
-Route::redirect('/', '/bbs');
-Route::resource('/bbs', ThreadController::class);
+Route::redirect('/', '/thread');
+Route::resource('/thread', ThreadController::class);
 Route::resource('/reply', ReplyController::class);
+Route::post('/thread/search', [ThreadController::class, 'search'])->name('thread.search');
