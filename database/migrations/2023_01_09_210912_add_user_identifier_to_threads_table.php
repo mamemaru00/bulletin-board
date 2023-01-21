@@ -14,7 +14,7 @@ class AddUserIdentifierToThreadsTable extends Migration
     public function up()
     {
         Schema::table('threads', function (Blueprint $table) {
-            $table->string('user_identifier', 20)->after('user_name');
+            $table->string('user_identifier', 20)->after('user_name')->nullable();
         });
     }
 

@@ -19,7 +19,19 @@ use App\Http\Controllers\ReplyController;
 //     return view('welcome');
 // });
 
-Route::redirect('/', '/thread');
-Route::resource('/thread', ThreadController::class);
-Route::resource('/reply', ReplyController::class);
+// Route::redirect('/', '/thread');
+// Route::resource('/thread', ThreadController::class);
+// Route::resource('/reply', ReplyController::class);
+// Route::post('/thread/search', [ThreadController::class, 'search'])->name('thread.search');
+
+Route::redirect('/', '/thread')->name('home');
+
+Route::resource('thread', ThreadController::class)->only([
+    'index', 'store', 'destroy'
+]);
+
 Route::post('/thread/search', [ThreadController::class, 'search'])->name('thread.search');
+
+Route::resource('/reply', ReplyController::class)->only([
+    'store'
+]);
