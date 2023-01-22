@@ -20,10 +20,17 @@
     <div class="w-11/12 max-w-screen-md m-auto">
 
         {{-- タイトル --}}
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <h1 class="text-xl font-bold mt-5"><a href="{{route('thread.index')}}">{{config('app.name')}}</a></h1>
-
+        <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center link-hover cursor-pointer">
+            <a :href="/" :active="/">
+                {{ __('お問い合わせ') }}
+            </a>
+          </nav>
+        </div>
+        
         {{-- 検索フォーム --}}
-        <div class="bg-white rounded-md mt-3 p-3">
+        <div class="bg-white rounded-md mt-3 p-3 my-5">
             <form action="{{route('thread.search')}}" method="post">
                 @csrf
                 <div class="mx-1 flex">
@@ -34,7 +41,7 @@
         </div>
 
         {{-- 入力フォーム --}}
-        <div class="bg-white rounded-md mt-5 p-3">
+        <div class="bg-white rounded-md mt-15 p-3">
             <form action="{{route('thread.store')}}" method="POST">
                 @csrf
                 {{-- ユーザー識別子の隠し要素 --}}
