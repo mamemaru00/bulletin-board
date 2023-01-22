@@ -16,11 +16,22 @@
         .link-hover:hover {opacity: 70%;}   /* リンクをホバーした時に少し薄く表示 */
     </style>
 </head>
-<body class="bg-blue-100">
+<body class="bg-gray-500">
     <div class="w-11/12 max-w-screen-md m-auto">
 
         {{-- タイトル --}}
         <h1 class="text-xl font-bold mt-5"><a href="{{route('thread.index')}}">{{config('app.name')}}</a></h1>
+
+        {{-- 検索フォーム --}}
+        <div class="bg-white rounded-md mt-3 p-3">
+            <form action="{{route('thread.search')}}" method="post">
+                @csrf
+                <div class="mx-1 flex">
+                    <input class="border rounded px-2 flex-auto" type="text" name="search_message" required>
+                    <input class="ml-2 px-2 py-1 rounded bg-gray-500 text-white font-bold link-hover cursor-pointer" type="submit" value="検索">
+                </div>
+            </form>
+        </div>
 
         {{-- 入力フォーム --}}
         <div class="bg-white rounded-md mt-5 p-3">
@@ -42,17 +53,6 @@
                 </div>
                 <div class="flex justify-end mt-2">
                     <input class="my-2 px-2 py-1 rounded bg-blue-300 text-blue-900 font-bold link-hover cursor-pointer" type="submit" value="投稿">
-                </div>
-            </form>
-        </div>
-
-        {{-- 検索フォーム --}}
-        <div class="bg-white rounded-md mt-3 p-3">
-            <form action="{{route('thread.search')}}" method="post">
-                @csrf
-                <div class="mx-1 flex">
-                    <input class="border rounded px-2 flex-auto" type="text" name="search_message" required>
-                    <input class="ml-2 px-2 py-1 rounded bg-gray-500 text-white font-bold link-hover cursor-pointer" type="submit" value="検索">
                 </div>
             </form>
         </div>
